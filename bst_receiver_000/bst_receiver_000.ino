@@ -4,7 +4,7 @@
 
 // real board pins are 0, 3, 5, 6
 const int RECV_PIN1 = 0;           //receiver #1 data pin
-const int RECV_PIN2 = 7;           //receiver #2 data pin
+const int RECV_PIN2 = 3;           //receiver #2 data pin
 const int RECV_PIN3 = 5;           //receiver #3 data pin
 const int RECV_PIN4 = 6;           //receiver #4 data pin
 
