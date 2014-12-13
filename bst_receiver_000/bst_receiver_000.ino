@@ -46,7 +46,7 @@ const int detectorNumberLimit = 2;  // number of receiving detectors for board t
 
 int boardIsFocused = 0;
 
-const int KEY1 = 2704;
+const int KEY1 = 0xffffbeda;
 /*const int KEY2 = 2705;
 const int KEY3 = 2706;
 
@@ -75,15 +75,6 @@ void setup()
     digitalWrite(FOCUS_PIN,LOW);
     delay(100);
   }
-  /*  pinMode(FPIN1,OUTPUT);
-  pinMode(FPIN2,OUTPUT);
-  pinMode(FPIN3,OUTPUT);
-  pinMode(FPIN4,OUTPUT);
-  */
-  /*  digitalWrite(FPIN1, LOW);
-  digitalWrite(FPIN2, LOW);
-  digitalWrite(FPIN3, LOW);
-  digitalWrite(FPIN4, LOW);*/
 }
 
 void loop() {
