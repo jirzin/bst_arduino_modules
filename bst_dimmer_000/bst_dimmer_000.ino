@@ -1,5 +1,10 @@
 // c code for arduino based board Eunuch
 // this particular program is a light Dimmer
+// logic on board is inverted
+// lights are on when board is writing logical LOW on its output
+// when signal on in pin is HIGH (cca 3.3v ) lights are slowly dimming to full light
+// sweeping from 255 = no light to 0 = full light at speed
+// when signal on in pin is LOW do an inverse sweep
 //
 // author: Bastlit
 
@@ -8,37 +13,24 @@
 int inPin = 2;
 int outPin = 9;
 
-// input signal smoothing
-int inX = 0;             // input signal
-int averageOf = 20;    // number of input values for average
-int xMax = 255;
-
 int fMax =255;
-//int state=0;
 int fSpeed = 40;
-int f = 0;
+int f = 255;
 
 //int readingInterval = 200;
 
 void setup(){
-
   pinMode(inPin,INPUT);
   pinMode(outPin,OUTPUT);
-
 }
 
 void loop(){
-  for(int n = 0; n < fMax; n++){
-    f = n;
-    analogWrite(outPin,f);
+  if(digitalRead(inPin)==LOW){
+    f = min(f+1,255);
+    delay(fSpeed);
+  } else {
+    f = max(f-1,0);
     delay(fSpeed);
   }
-  digitalWrite(outPin,f);
-  delay(10000);
-  for(int n = fMax; n > 0; n--){
-    f = n;
-    analogWrite(outPin,f);
-    delay(fSpeed);
-  }
-  delay(100);
+  analogWrite(outPin,f);
 }
