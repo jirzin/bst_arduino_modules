@@ -42,19 +42,12 @@ int detectorFocus2 = 0;
 int detectorFocus3 = 0;
 int detectorFocus4 = 0;
 
-const int detectorNumberLimit = 2;  // number of receiving detectors for board to be focused
+const int detectorNumberLimit = 2;  // n+  of receiving detectors for board to be focused
 
 int boardIsFocused = 0;
 
 const int KEY1 = 0xffffbeda;
-/*const int KEY2 = 2705;
-const int KEY3 = 2706;
 
-int pattern1[] = {0,0,0};
-int pattern2[] = {0,0,0};
-int pattern3[] = {0,0,0};
-int pattern4[] = {0,0,0};
-*/
 const boolean DEBUG_SERIAL = false;
 
 void setup()
@@ -69,12 +62,6 @@ void setup()
 
   pinMode(FOCUS_PIN,OUTPUT);
 
-  for(int i = 4; i > 0; i--){
-    digitalWrite(FOCUS_PIN,HIGH);
-    delay(100);
-    digitalWrite(FOCUS_PIN,LOW);
-    delay(100);
-  }
 }
 
 void loop() {
@@ -162,12 +149,6 @@ void loop() {
     Serial.print(detectorFocus4);
   }
 
-  //digitalWrite(FOCUS_PIN,boardIsFocused);
-  /*  digitalWrite(FPIN1,detectorFocus1);
-  digitalWrite(FPIN2,detectorFocus2);
-  digitalWrite(FPIN3,detectorFocus3);
-  digitalWrite(FPIN4,detectorFocus4);
-  */
 }
 
 
@@ -205,113 +186,3 @@ int timeNotExceed(unsigned long t){
     return 0;
   }
 }
-
-
-/*
-int matchFrstKey(int actKey, int frstKey){
-  if(actKey == frstKey){
-    return 1;
-  }else{
-    return 0;
-  }
-}
-
-int matchScndKey(int actKey, int scndKey){
-  if(getScndNextKey(actKey) == scndKey){
-    return 1;
-  }else{
-    return 0;
-  }
-}
-
-
-
-int getPrevKey(int actKey){
-  switch(actKey){
-  case KEY1:
-    return KEY3;
-    break;
-  case KEY2:
-    return KEY1;
-    break;
-  case KEY3:
-    return KEY2;
-    break;
-  }
-}
-
-
-int getFrstNextKey(int actKey){
-  switch(actKey){
-  case KEY1:
-    return KEY2;
-    break;
-  case KEY2:
-    return KEY3;
-    break;
-  case KEY3:
-    return KEY1;
-    break;
-  }
-}
-
-int getScndNextKey(int actKey){
-  switch(actKey){
-  case KEY1:
-    return KEY3;
-    break;
-  case KEY2:
-    return KEY1;
-    break;
-  case KEY3:
-    return KEY2;
-    break;
-  }
-}
-
-void pushTo(int val, int arr[]){
-  arr[2] = arr[1];
-  arr[1] = arr[0];
-  arr[0] = val;
-}
-
-int matchPatt(int v1, int patt[]){
-  int r = 0;
-  int v2 = getPrevKey(v1);
-  int v3 = getPrevKey(v2);
-  if(v1==KEY1&&v2==KEY2&&v3==KEY3){
-    r = 1;
-  }
-  if(v1==KEY2&&v2==KEY3&&v3==KEY1){
-    r = 1;
-  }
-  if(v1==KEY3&&v2==KEY1&&v3==KEY2){
-    r = 1;
-  }
-  return r;
-}
-*/
-/*
-void decodeAndMatch(IRrecv irr, decode_results dr, int patt[]){
-
-  if (irr.decode(&dr)) {
-
-    pushTo(dr.value,patt);
-
-    if(matchFrstKey(dr.value,frstKey1) &&
-       matchScndKey(results1.value,scndKey1)){
-
-      lastTick1 = actualTime;
-
-    }
-
-    //frstKey1 = getFrstNextKey(results1.value);
-    //scndKey1 = getFrstNextKey(frstKey1);
-
-    Serial.print("\n1: ");
-    Serial.print(results1.value, HEX);   //print code from receiver #1
-
-    irrecv1.resume(); // Receive the next value
-  }
-
-  }*/
