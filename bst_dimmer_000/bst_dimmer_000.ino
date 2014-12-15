@@ -14,7 +14,7 @@ int inPin = 2;
 int outPin = 9;
 
 int fMax =255;
-int fSpeed = 40;
+int fSpeed = 12;
 int f = 255;
 
 //int readingInterval = 200;
