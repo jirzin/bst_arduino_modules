@@ -1,4 +1,9 @@
 bst_arduino_modules
 ===================
-
 codes and circuits for instalation in Bedrich Smetana Muzeum
+
+bst_receiver is the 4 channel IR signal receiver that expects 0xFFFFBEDA sequence in NEC coding on more than two of its TSOP receivers with demodulation...
+
+bst_emmittor is 1 channel IR signal generator that emmits 0xFFFFBEDA sequence in NEC coding...
+
+bst_dimmer is 1 channel LED dimmer that converts sudden changes in controll signal to ramps...
